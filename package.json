@@ -1,0 +1,34 @@
+{
+  "name": "temp-sensor-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx babel-node src/index.js",
+    "dev": "npx nodemon --exec babel-node src/index.js",
+    "create-db": "npx babel-node scripts/createdb.js",
+    "range": "npx babel-node scripts/range.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "aws-sdk": "^2.573.0",
+    "body-parser": "^1.19.0",
+    "core-js": "^3.4.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^1.19.4",
+    "uuid": "^3.3.3"
+  }
+}
