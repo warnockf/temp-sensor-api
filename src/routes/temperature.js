@@ -8,7 +8,9 @@ const router = new Router();
 
 router.get('/', async (req, res) => {
   try {
-    const raw = await dynamoService.get(moment().subtract(24, 'hours'), moment());
+    const timeStart = moment().subtract(24, 'hours');
+    const timeEnd = moment();
+    const raw = await dynamoService.get(timeStart, timeEnd);
     const data = raw.Items.map((item) => ({
       temperature: item.temperature.N,
       timestamp: item.timestamp.S,

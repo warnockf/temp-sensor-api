@@ -2,6 +2,7 @@ version: '3'
 services:
   
   api:
+    container_name: api
     build: .
     command: npm run dev
     environment:
@@ -11,18 +12,17 @@ services:
     volumes:
       - .:/app
     ports:
-      - "3000:3000"
+      - "80:3000"
     depends_on:
       - localstack
 
   localstack:
+    container_name: localstack
     image: localstack/localstack
     environment:
       SERVICES: dynamodb:4000
       PORT_WEB_UI: 4586
       DATA_DIR: /tmp/localstack/data
-    # ports:
-    #   - "4000:4000"
     volumes:
       - "localstack:/tmp/localstack"
 

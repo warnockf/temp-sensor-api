@@ -18,7 +18,6 @@ const getParams = (start, end) => ({
     },
   },
   TableName: 'temperature',
-  Limit: 10,
 });
 
 const dynamoDb = new DynamoDB({ endpoint: settings.dynamodbEndpoint, region: settings.dynamoDbRegion });
