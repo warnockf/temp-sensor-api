@@ -4,7 +4,7 @@ FROM node:10.17-alpine AS builder
 WORKDIR /app
 COPY . .
 
-RUN npm install && npm build
+RUN npm install && npm run build
 
 # Run phase
 FROM node:10.17-alpine
