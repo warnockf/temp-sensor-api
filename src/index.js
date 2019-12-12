@@ -7,7 +7,7 @@ const app = express();
 
 // Register middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Register routes
 app.get('/', (req, res) => res.send('Hello World!'));

@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx babel-node src/index.js",
-    "dev": "npx nodemon --exec babel-node src/index.js",
-    "create-db": "npx babel-node scripts/createdb.js",
-    "range": "npx babel-node scripts/range.js",
+    "start": "node build/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "build": "babel src --out-dir build",
+    "create-db": "babel-node scripts/createdb.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

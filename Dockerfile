@@ -1,11 +1,23 @@
+# Build phase
+FROM node:10.17-alpine AS builder
+
+WORKDIR /app
+COPY . .
+
+RUN npm install && npm build
+
+# Run phase
 FROM node:10.17-alpine
+
+ENV NODE_ENV=production
 
 WORKDIR /app
 COPY package*.json ./
+COPY .env ./
 
-RUN npm install
+RUN npm install && npm cache clean --force
 
-COPY . .
+COPY --from=builder /app/build ./build
 
 EXPOSE 3000
 
