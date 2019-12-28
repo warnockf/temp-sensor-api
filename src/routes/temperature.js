@@ -7,21 +7,21 @@ const dynamoService = dynamo();
 const router = new Router();
 
 router.get('/', async (req, res) => {
+  // TODO: Validation
+  const start = req.query.start && moment.unix(req.query.start) || moment().subtract(24, 'hours');
+  const end = req.query.end && moment.unix(req.query.end) || moment();
+
   try {
-    const timeStart = moment().subtract(24, 'hours');
-    const timeEnd = moment();
-    const raw = await dynamoService.get(timeStart, timeEnd);
+    const raw = await dynamoService.get(start, end);
     const data = raw.Items.map((item) => ({
       temperature: item.temperature.N,
       timestamp: item.timestamp.S,
     }));
     res.send(data);
   } catch (ex) {
-    console.log(ex);
+    console.log(ex); // TODO: Proper logging
     res.sendStatus(400);
   }
 });
-
-// TODO: endpoint with paramst for start/end time
 
 export default router;
